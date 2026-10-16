@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://cqk87l7jt1i51"]
+
+[ext_resource type="Script" uid="uid://8oeptgwd5o4d" path="res://Components/Bullet.cs" id="1_vlxeq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vlxeq"]
+radius = 0.20263672
+height = 1.0133286
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_14k46"]
+emission_enabled = true
+emission = Color(0, 0.79607844, 0.93333334, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_nr8tw"]
+material = SubResource("StandardMaterial3D_14k46")
+radius = 0.15136719
+height = 0.9613037
+
+[node name="Bullet" type="Area3D" unique_id=563027837]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_vlxeq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1857628511]
+transform = Transform3D(1.9106855e-15, 4.371139e-08, 1, 1, -4.371139e-08, 0, 4.371139e-08, 1, -4.371139e-08, 0, 0, 0.032)
+shape = SubResource("CapsuleShape3D_vlxeq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1361971371]
+transform = Transform3D(0.99999994, 0, 3.8213714e-15, 3.8213705e-15, 4.371139e-08, -1, 0, 1, 4.371139e-08, 0, 0, 0)
+mesh = SubResource("CapsuleMesh_nr8tw")
+
+[connection signal="body_entered" from="." to="." method="OnBulletBodyEntered"]

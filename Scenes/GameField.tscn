@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://dxuarejawm2tb"]
+
+[ext_resource type="PackedScene" uid="uid://ncqwe6or4iij" path="res://Scenes/Enemy.tscn" id="1_0tirt"]
+[ext_resource type="PackedScene" uid="uid://cbvyr2ilwwbl6" path="res://Scenes/Tower.tscn" id="2_7x21m"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4kxuq"]
+size = Vector3(2.1436005, 0.32763672, 2.2110596)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wv4s5"]
+
+[sub_resource type="Environment" id="Environment_4kxuq"]
+glow_enabled = true
+
+[node name="Field" type="Node3D" unique_id=988685458]
+
+[node name="Floor" type="Node3D" parent="." unique_id=1959413987]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, -0.37184, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Floor" unique_id=1776765236]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor/StaticBody3D" unique_id=2094564403]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.013175964, -0.15614866, -0.051452637)
+shape = SubResource("BoxShape3D_4kxuq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor" unique_id=2102540672]
+transform = Transform3D(1, 0, 0, 0, 0.9998938, -0.0145763345, 0, 0.0145763345, 0.9998938, 0, 0, 0)
+mesh = SubResource("PlaneMesh_wv4s5")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1432093341]
+environment = SubResource("Environment_4kxuq")
+
+[node name="AreaLight3D" type="AreaLight3D" parent="." unique_id=367934628]
+transform = Transform3D(-1, 3.821371e-15, 8.742278e-08, 8.742278e-08, 4.371139e-08, 1, 0, 1, -4.371139e-08, -1.5566545, 5.311286, 0.23611367)
+light_energy = 10.0
+area_range = 8.763
+area_size = Vector2(2.8876095, 3.0186594)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1166754886]
+transform = Transform3D(-1, 0, -8.742278e-08, -6.181724e-08, 0.70710677, 0.70710677, 6.181724e-08, 0.70710677, -0.70710677, -0.13576704, 6.171668, -8.689973)
+size = 18.751009
+
+[node name="Tower" parent="." unique_id=1217166878 instance=ExtResource("2_7x21m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.4036627, -0.29514313, -0.19267368)
+
+[node name="Enemy" parent="." unique_id=2050167119 instance=ExtResource("1_0tirt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0266275, -0.29514217, -5.5729218)
+
+[node name="Enemy2" parent="." unique_id=1904211263 instance=ExtResource("1_0tirt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.620098, -0.29514217, 3.09511)

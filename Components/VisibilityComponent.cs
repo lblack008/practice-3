@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 [GlobalClass]
-public partial class VisibityComponent : Area3D
+public partial class VisibilityComponent : Area3D
 {
 	// другие компоненты
 	[Export]
